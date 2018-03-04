@@ -28,9 +28,11 @@ describe StreamCi::Runner do
     context 'when initialized with a runner' do
       context 'and when corresponding runner class is defined' do
         it 'sends `invoke` to that runner' do
-          class StreamCi::Runners::FakeFramework
+          stub_const 'StreamCi::Runners::FakeFramework', Class.new
+          StreamCi::Runners::FakeFramework.class_eval do
             def self.invoke; end
           end
+
           expect(StreamCi::Runners::FakeFramework).to receive(:invoke)
           StreamCi::Runner.new('fake_framework').invoke
         end
