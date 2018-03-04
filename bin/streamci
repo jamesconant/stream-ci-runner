@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'stream_ci_runner'
+
+runner_name = ARGV[0]
+
+runner = StreamCi::Runner.new runner_name
+
+if runner.valid?
+  runner.invoke
+else
+  puts '#'
+  puts '# Failure: there were one or more errors.'
+  puts '#'
+  runner.errors.each do |error|
+    puts "#   #{error}"
+  end
+  puts '#'
+  exit 1
+end

@@ -1,2 +1,5 @@
-require 'stream_ci_runner/version'
-require 'stream_ci_runner/stream_ci_runner'
+module StreamCi; end
+module StreamCi::Runners; end
+
+require 'stream_ci/runner'
+require 'stream_ci/version'

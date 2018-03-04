@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'stream_ci_runner/version'
+require 'stream_ci/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'stream-ci-runner'
-  spec.version       = StreamCiRunner::VERSION
+  spec.version       = StreamCi::Runner::VERSION
   spec.authors       = ['James Conant']
   spec.email         = ['jconant@streamci.com']
 
