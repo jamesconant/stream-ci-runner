@@ -32,7 +32,7 @@ module StreamCi
     end
 
     def runner_unavailable?
-      !Object.const_defined?(klass_root + parsed_runner)
+      !Object.const_defined? full_klass
     end
 
     def missing_message
@@ -44,7 +44,7 @@ module StreamCi
     end
 
     def full_klass
-      klass_root + parsed_runner
+      "StreamCi::#{parsed_runner}::Runner"
     end
 
     def runner_klass
@@ -53,10 +53,6 @@ module StreamCi
 
     def parsed_runner
       @runner.split(/[^a-zA-Z\d]/).map { |ww| ww.downcase.capitalize }.join
-    end
-
-    def klass_root
-      'StreamCi::Runners::'
     end
   end
 end

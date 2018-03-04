@@ -8,7 +8,7 @@ describe StreamCi::Runner do
       context 'and when corresponding runner class is not defined' do
         it 'provides an error message' do
           runner = StreamCi::Runner.new('fake_framework')
-          klass = 'StreamCi::Runners::FakeFramework'
+          klass = 'StreamCi::FakeFramework::Runner'
           error_messsage = "'fake_framework' (#{klass}) runner is not defined."
           expect(runner.errors).to contain_exactly error_messsage
         end
@@ -28,12 +28,12 @@ describe StreamCi::Runner do
     context 'when initialized with a runner' do
       context 'and when corresponding runner class is defined' do
         it 'sends `invoke` to that runner' do
-          stub_const 'StreamCi::Runners::FakeFramework', Class.new
-          StreamCi::Runners::FakeFramework.class_eval do
+          stub_const 'StreamCi::FakeFramework::Runner', Class.new
+          StreamCi::FakeFramework::Runner.class_eval do
             def self.invoke; end
           end
 
-          expect(StreamCi::Runners::FakeFramework).to receive(:invoke)
+          expect(StreamCi::FakeFramework::Runner).to receive(:invoke)
           StreamCi::Runner.new('fake_framework').invoke
         end
       end
