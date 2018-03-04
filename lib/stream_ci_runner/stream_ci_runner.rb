@@ -1,4 +1,4 @@
-module StreamCiRspec
+module StreamCiRunner
   # def self.invoke
   #   eval(open(ENV['APOC_RUNNER_URL']).read)
   #   Apoc::Runner.invoke
